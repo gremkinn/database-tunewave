@@ -239,21 +239,235 @@ notifications when there are updates.
 ## Data for Tables
 
 #### Table: TW_User
+
+|UserID|Username|FirstName|LastName|Gender|Email|Birthdate|AccStatus|JoinDate|
+|:------:|:--------:|:---------:|:--------:|:------:|:-----:|:---------:|:---------:|:--------:|
+|1|skywalker85|John|Doe|Male|john.doe@example.com|15-MAR-1985|Active|15-JAN-2024|
+|2|sunnydays90|Anna|-|Female|anna.smith@example.com|22-JUL-1990|Active|10-FEB-2024|
+|3|nightowl78|Robert|Jones|Unavailable|robert.jones@example.com|30-NOV-1978|Inactive|30-NOV-2023|
+|4|starrysky82|Maria|Davis|Female|maria.davis@example.com|25-JAN-1982|Active|05-MAR-2024|
+|5|coolcat92|Juan|Garcia|Unavailable|juan.garcia@example.com|14-MAY-1992|Active|20-MAY-2024|
+|6|moondancer89|Emily|Wilson|Female|emily.wilson@example.com|09-AUG-1989|Active|18-JUN-2024|
+|7|thunderbird75|Thomas|Wales|Male|thomassq@example.com|17-DEC-1975|Active|01-DEC-2023|
+|8|rainbow94|Megan|Johnson|Female|megan.johnson@example.com|21-MAR-1994|Active|12-MAR-2023|
+|9|oceanwaves83|William|-|Male|william.lopez@example.com|04-JUN-1983|Active|28-FEB-2024|
+|10|stargazer96|Nina|Khan|Unavailable|nina.khan@example.com|10-SEP-1996|Active|09-JUL-2023|
+
 #### Table: Subscription
+
+|SubType|Price|PlaybackShuffle|EarlyAccess|OfflineAccess|
+|:-----:|:---:|:-------------:|:---------:|:-----------:|
+|Free|-|False|False|False|
+|Bronze|$5.98|True|False|False|
+|Silver|$8.98|True|True|False|
+|Gold|$12.98|True|True|True|
+
 #### Table: SubscriptionOrder
+
+|OrderID|OrderDate|StartDate|ExpiryDate|PaymentMethod|Status|Subtype|UserID|
+|:-----:|:-------:|:-------:|:--------:|:-----------:|:----:|:-----:|:----:|
+|1|10-JAN-2024|15-JAN-2024|StartDate + 1 year|Visa|Paid|Bronze|7|
+|2|05-FEB-2024|10-FEB-2024|StartDate + 1 year|Master|Paid|Gold|8|
+|3|15-MAR-2024|-|-|-|Cancelled|Silver|4|
+|4|20-APR-2024|-|-|-|Pending|Silver|10|
+|5|08-MAY-2024|08-MAY-2024|StartDate + 1 year|Master|Paid|Gold|5|
+|6|25-JUN-2024|26-JUN-2024|StartDate + 1 year|GIRO|Paid|Silver|4|
+|7|12-JUL-2024|-|-|-|Pending|Bronze|6|
+
 #### Table: Artist
+
+|ArtistID|Name|Type|StartDate|EndDate|Status|
+|:------:|:--:|:--:|:-------:|:-----:|:----:|
+|1|Michael Jackson|Solo|01-MAY-1970|25-JUN-2009|Inactive|
+|2|The Beatles|Group|01-AUG-1960|10-APR-1970|Inactive|
+|3|Beyoncé|Solo|01-JAN-1997|-|Active|
+|4|Queen|Group|01-JUN-1970|-|Inactive|
+|5|Elton John|Solo|-|-|Inactive|
+|6|ABBA|Group|20-OCT-1972|31-DEC-1983|Active|
+|7|Taylor Swift|Solo|12-SEP-2004|-|Active|
+|8|The Rolling Stones|Group|01-JUL-1962|-|Active|
+
 #### Table: ArtistFollower
+
+|AFollowerID|FollowDate|ArtistID|UserID|
+|:---------:|:--------:|:------:|:----:|
+|1|25-SEP-2024|4|5|
+|2|18-AUG-2023|8|10|
+|3|20-JUL-2024|3|7|
+|4|14-JUN-2023|1|8|
+|5|30-MAY-2024|2|5|
+|6|02-APR-2024|6|3|
+|7|15-MAR-2024|7|9|
+|8|28-FEB-2024|5|2|
+|9|10-JUL-2024|4|6|
+|10|05-FEB-2024|8|1|
+|11|20-JUN-2024|3|4|
+|12|22-OCT-2023|1|10|
+|13|18-SEP-2024|2|3|
+|14|30-AUG-2024|6|7|
+|15|25-JUL-2023|7|8|
+
 #### Table: Genre
+
+|GenreID|GenreName|
+|:-----:|:------:|
+|1|M_Rock|
+|2|M_Pop|
+|3|M_Jazz|
+|4|M_Blues|
+|5|M_HipHop|
+|6|M_Electronic|
+|7|P_Tech|
+|8|P_TrueCrime|
+|9|P_Health|
+|10|P_History|
+
 #### Table: Album
+
+|AlbumID|AlbumName|ReleaseDate|GenreID|ArtistID|
+|:-----:|:-------:|:---------:|:-----:|:------:|
+|1|Off the Wall|10-AUG-1979|2|1|
+|2|Abbey Road|26-SEP-1969|1|2|
+|3|1989|27-OCT-2014|2|7|
+|4|Goodbye Yellow Brick Road|-|-|5|
+
 #### Table: Track
+
+|TrackID|TrackName|ReleaseDate|GenreID|AlbumID|ArtistID|
+|:-----:|:-------:|:---------:|:-----:|:-----:|:------:|
+|1|Don't Stop 'Til You Get Enough|10-AUG-1979|2|1|1|
+|2|Rock with You|10-AUG-1979|2|1|1|
+|3|Off the Wall|10-AUG-1979|2|1|1|
+|4|Come Together|26-SEP-1969|1|2|2|
+|5|Something|26-SEP-1969|1|2|2|
+|6|Here Comes the Sun|26-SEP-1969|1|2|2|
+|7|Shake It Off|27-OCT-2014|2|3|7|
+|8|Blank Space|27-OCT-2014|2|3|7|
+|9|Style|27-OCT-2014|2|3|7|
+|10|Goodbye Yellow Brick Road|-|-|4|5|
+|11|Candle in the Wind|-|-|4|5|
+|12|Bennie and the Jets|-|-|4|5|
+|13|Billie Jean|01-JAN-1983|2|-|1|
+|14|Hey Jude|-|2|-|2|
+|15|Love Story|12-SEP-2008|3|-|7|
+|16|Bohemian Rhapsody|31-OCT-1975|4|-|4|
+|17|Single Ladies|13-OCT-2008|5|-|3|
+
 #### Table: UserFavourites
+
+|FaveTrackID|DateAdded|UserID|TrackID|
+|:---------:|:-------:|:----:|:-----:|
+|1|20-JAN-2024|1|1|
+|2|15-FEB-2024|2|6|
+|3|01-DEC-2023|3|9|
+|4|20-MAR-2024|4|12|
+|5|30-MAY-2024|5|15|
+|6|25-JUN-2024|6|3|
+|7|10-DEC-2023|7|8|
+|8|25-MAR-2023|8|5|
+|9|10-AUG-2023|9|11|
+|10|30-JUL-2023|10|14|
+|11|28-FEB-2024|1|4|
+|12|10-MAR-2024|2|7|
+|13|05-JAN-2024|3|2|
+|14|15-APR-2024|4|10|
+|15|20-JUN-2024|5|13|
+
 #### Table: Playlist
+
+|PlaylistID|PlaylistName|Visibility|CreatorID|
+|:--------:|:----------:|:--------:|:-------:|
+|1|Summer Hits|Public|1|
+|2|Chill Vibes|Private|2|
+|3|-|Public|5|
+|4|Study Music|Private|6|
+
 #### Table: PlaylistItem
+
+|ItemID|DateAdded|PlaylistID|TrackID|
+|:----:|:-------:|:--------:|:-----:|
+|1|15-JAN-2024|1|1|
+|2|10-FEB-2024|1|2|
+|3|20-MAY-2024|1|3|
+|4|15-FEB-2024|2|4|
+|5|01-MAR-2024|2|5|
+|6|27-OCT-2024|3|7|
+|7|27-OCT-2024|3|8|
+|8|27-OCT-2024|3|9|
+|9|05-JUL-2024|4|10|
+|10|05-JUL-2024|4|11|
+|11|12-SEP-2024|4|12|
+|12|10-MAR-2024|1|6|
+
 #### Table: PlaylistFollower
+
+|PLFollowerID|FollowDate|PlaylistID|UserID|
+|:----------:|:--------:|:--------:|:----:|
+|1|01-MAR-2024|1|2|
+|2|05-APR-2024|2|3|
+|3|10-MAY-2024|3|4|
+|4|15-JUN-2024|4|5|
+|5|20-JUN-2024|2|6|
+|6|25-FEB-2024|1|7|
+|7|01-JUL-2024|4|8|
+|8|12-JUN-2024|3|9|
+|9|02-MAY-2024|1|10|
+|10|10-APR-2024|3|1|
+
 #### Table: PodcastCreator
+
+|CreatorID|CreatorName|Type|StartDate|EndDate|Status|
+|:-------:|:---------:|:--:|:-------:|:-----:|:----:|
+|1|EchoTalk|Group|01-JAN-2023|-|Active|
+|2|SoloSound|Solo|15-JUN-2022|-|Active|
+|3|PodSquad|Group|20-SEP-2023|-|Active|
+
 #### Table: Podcast
+
+|PodcastID|PodcastName|StartDate|EndDate|GenreID|CreatorID|
+|:-------:|:---------:|:-------:|:-----:|:-----:|:-------:|
+|1|TechTalk|01-FEB-2023|-|7|1|
+|2|True Crime Chronicles|01-JUL-2022|30-JUN-2023|8|2|
+|3|Health Insights|01-OCT-2023|-|9|3|
+|4|History Uncovered|01-JAN-2024|-|10|2|
+
 #### Table: PodcastEpisode
+
+|EpisodeID|EpisodeName|ReleaseDate|PodcastID|
+|:-------:|:---------:|:---------:|:-------:|
+|1|Emerging Technologies|01-FEB-2023|1|
+|2|Future of AI|15-FEB-2023|1|
+|3|Blockchain Revolution|01-MAR-2023|1|
+|4|The Cold Case Files|01-JUL-2022|2|
+|5|Murder Mysteries: Unsolved|15-JUL-2022|2|
+|6|Wellness and Mental Health|01-OCT-2023|3|
+|7|Nutrition and Diet Myths|15-OCT-2023|3|
+|8|Fitness Trends|01-NOV-2023|3|
+|9|Ancient Civilizations|01-JAN-2024|4|
+|10|World Wars in Perspective|15-JAN-2024|4|
+
 #### Table: PodcastCreatorFollower
+
+|PCFollowerID|FollowDate|CreatorID|UserID|
+|:----------:|:--------:|:-------:|:----:|
+|1|01-MAR-2024|1|1|
+|2|10-FEB-2024|2|2|
+|3|01-DEC-20233|3|
+|4|05-APR-2024|1|4|
+|5|20-MAY-2024|2|5|
+|6|15-JUL-2024|3|6|
+
 #### Table: PodcastFollower
+
+|PodFollowerID|FollowDate|PodcastID|UserID|
+|:-----------:|:--------:|:-------:|:----:|
+|1|25-MAR-2024|1|3|
+|2|01-JUN-2024|2|5|
+|3|10-MAR-2024|3|2|
+|4|20-JUN-2024|1|6|
+|5|01-MAY-2024|2|1|
+|6|10-JUL-2024|4|4|
+|7|02-APR-2024|1|8|
+|8|10-MAR-2024|4|7|
 
 
