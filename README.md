@@ -470,4 +470,52 @@ notifications when there are updates.
 |7|02-APR-2024|1|8|
 |8|10-MAR-2024|4|7|
 
+## Conclusion
 
+I chose to build a database for an online music & podcast streaming platform according to 
+some set business rules. The process began by identifying the required entities and their 
+attributes. This involved looking into how Spotify’s software was laid out and the information it 
+held.
+
+Next, while working on the Entity Relationship Diagram, I realised that the existing business rules 
+were not sufficient or detailed enough. I had to ask a lot more questions about how the entities 
+interacted with each other, to complete the diagram. 
+
+Following which, I listed down all the attributes, their data types, constraints and default values,
+if any, into the table definitions. This gave me a reference upon which I created the sample data. 
+While doing this, I realised some of the tables needed more constraints, specifically composite 
+unique keys, to prevent duplicate records.
+
+The next step was to write & test the SQL scripts to create the tables and populate them with the 
+sample data. The table definitions made this much easier as I had a reference to work with.
+
+The final portion of the project involved creating queries. To do this, I once again had to ask 
+questions on how the data might be used in a software or how it might be used for business 
+planning.
+
+In summary, I successfully managed to create a database for an online music and podcast 
+streaming platform. While it definitely serves its purpose for the project, there is still plenty of 
+scope for the database to be expanded/improved upon. In reality, such a platform would
+require far more information than what I have managed to put out.
+
+## Reflection
+
+I thoroughly enjoyed putting the ERD together as it presented as a puzzle whose outcome was 
+unknown. I had to go table by table, gradually building each relationship and completing the 
+whole picture.
+
+In our other modules, we have been working with MyPHPAdmin’s MySQL interface. While 
+creating the SQL scripts, I learnt that there are some differences between SQL there and SQL in 
+the Oracle interface. In MySQL we could easily apply an AUTO-INCREMENT constraint to a
+column. In Oracle, we have to create a sequence and call that sequence in each INSERT 
+statement. Oracle also didn’t seem to allow multi-lined INSERT statements, especially when 
+using a sequence. Hence, writing out the data population statements was painful. 
+
+Thinking of sample queries proved to be challenging for me. While it was easy to imagine how 
+this data might be presented in a software, and create the query required, it was difficult to think 
+of the business applications of the data. I chalk this up to my lack of experience and unfamiliarity 
+with general business practices. 
+
+I look forward to an opportunity to build a database again. I also wish to explore the full 
+capabilities of SQL queries including Procedural Language and to work with Transaction Control 
+Language.
