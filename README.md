@@ -97,11 +97,12 @@ notifications when there are updates.
 |:---------:|:--------:|:---------:|:--------:|:---------:|
 | OrderID | Primary Key | - | Number | 5 |
 | OrderDate | Not Null | SYSDATE | Date | - |
-| StartDate | Check ((Status = 'Paid' AND StartDate IS NOT NULL) OR (Status != 'Paid' AND StartDate IS | - | ADD_MONTHS(StartDate,12) | Date | - |
+| StartDate | Check ((Status = 'Paid' AND StartDate IS NOT NULL) OR (Status != 'Paid' AND StartDate IS | - | Date | - |
+| ExpiryDate | - | ADD_MONTHS(StartDate,12) | Date | - |
 | PaymentMethod | Check (Master, Visa, GIRO) | - | Varchar2  | 6 |
 | Status | Check (Paid, Pending, Cancelled), Not Null | - | Varchar2 | 9 |
-| SubType | Not Null, Foreign Key to Subscription table | - | Varchar2  | 6 |
-| UserID | Not Null, Foreign Key to TW_User table | - | Number | 6 |
+| SubType | Not Null, Foreign Key to *Subscription* table | - | Varchar2 | 6 |
+| UserID | Not Null, Foreign Key to *TW_User* table | - | Number | 6 |
 
 #### Table: Artist
 
@@ -120,8 +121,8 @@ notifications when there are updates.
 |:---------:|:--------:|:---------:|:--------:|:---------:|
 | AFollowerID | Primary Key | - | Number | 5 |
 | FollowDate | Not Null | SYSDATE | Date | - |
-| ArtistID | Not Null, Foreign Key to Artist table, Unique with UserID | - | Number | 4 |
-| UserID | Not Null, Foreign Key to TW_User table, Unique with ArtistID | - | Number | 6 |
+| ArtistID | Not Null, Foreign Key to *Artist* table, Unique with UserID | - | Number | 4 |
+| UserID | Not Null, Foreign Key to *TW_User* table, Unique with ArtistID | - | Number | 6 |
 
 #### Table: Genre
 
@@ -137,8 +138,8 @@ notifications when there are updates.
 | AlbumID | Primary Key | - | Number | 3 |
 | AlbumName | Not Null, Unique with ArtistID | - | Varchar2 | 100 |
 | ReleaseDate | - | - | Date | - |
-| GenreID | Foreign Key to Genre table | - | Number | 2 |
-| ArtistID | Not Null, Foreign Key to Artist table, Unique with AlbumName | - | Number | 4 |
+| GenreID | Foreign Key to *Genre* table | - | Number | 2 |
+| ArtistID | Not Null, Foreign Key to *Artist* table, Unique with AlbumName | - | Number | 4 |
 
 #### Table: Track
 
@@ -147,9 +148,9 @@ notifications when there are updates.
 | TrackID | Primary Key | - | Number | 6 |
 | TrackName | Not Null, Unique with ArtistID | - | Varchar2 | 50 |
 | ReleaseDate | - | - | Date | - |
-| GenreID | Foreign Key to Genre table | - | Number | 2 |
-| AlbumID | Foreign Key to Album table | - | Number | 3 |
-| ArtistID | Not Null, Foreign Key to Artist table, Unique with TrackName | - | Number | 4 |
+| GenreID | Foreign Key to *Genre* table | - | Number | 2 |
+| AlbumID | Foreign Key to *Album* table | - | Number | 3 |
+| ArtistID | Not Null, Foreign Key to *Artist* table, Unique with TrackName | - | Number | 4 |
 
 #### Table: UserFavourites
 
@@ -157,17 +158,17 @@ notifications when there are updates.
 |:---------:|:--------:|:---------:|:--------:|:---------:|
 | FaveTrackID | Primary Key | - | Number | 6 |
 | DateAdded | Not Null | SYSDATE | Date | - |
-| UserID | Not Null, Foreign Key to TW_User table, Unique with TrackID | - | Number | 6 |
-| TrackID | Not Null, Foreign Key to Track table, Unique with UserID | - | Number | 6 |
+| UserID | Not Null, Foreign Key to *TW_User* table, Unique with TrackID | - | Number | 6 |
+| TrackID | Not Null, Foreign Key to *Track* table, Unique with UserID | - | Number | 6 |
 
 #### Table: Playlist
 
 | Column Name | Constraints | Default Value | Data Type | Length |
 |:---------:|:--------:|:---------:|:--------:|:---------:|
 | PlaylistID | Primary Key | - | Number | 5 |
-| PlaylistName | Not Null | "Playlist#" || PlaylistID | Varchar2 | 100 |
+| PlaylistName | Not Null | "Playlist#" \|\| PlaylistID | Varchar2 | 100 |
 | Visibility | Not Null, Check (Private or Public) | - | Varchar2 | 7 |
-| CreatorID | Not Null, Foreign Key to TW_User table | - | Number | 6 |
+| CreatorID | Not Null, Foreign Key to *TW_User* table | - | Number | 6 |
 
 #### Table: PlaylistItem
 
@@ -175,8 +176,8 @@ notifications when there are updates.
 |:---------:|:--------:|:---------:|:--------:|:---------:|
 | ItemID | Primary Key | - | Number | 6 |
 | DateAdded | Not Null | SYSDATE | Date | - |
-| PlaylistID | Not Null, Foreign Key to Playlist table, Unique with TrackID | - | Number    | 5 |
-| TrackID | Not Null, Foreign Key to Track table, Unique with PlaylistID | - | Number | 6 |
+| PlaylistID | Not Null, Foreign Key to *Playlist* table, Unique with TrackID | - | Number    | 5 |
+| TrackID | Not Null, Foreign Key to *Track* table, Unique with PlaylistID | - | Number | 6 |
 
 #### Table: PlaylistFollower
 
@@ -184,8 +185,8 @@ notifications when there are updates.
 |:---------:|:--------:|:---------:|:--------:|:---------:|
 | PLFollowerID | Primary Key | - | Number | 6 |
 | FollowDate | Not Null | SYSDATE | Date | - |
-| PlaylistID | Not Null, Foreign Key to Playlist table, Unique with UserID | - | Number | 5 |
-| UserID | Not Null, Foreign Key to TW_User table, Unique with PlaylistID | - | Number | 6 |
+| PlaylistID | Not Null, Foreign Key to *Playlist* table, Unique with UserID | - | Number | 5 |
+| UserID | Not Null, Foreign Key to *TW_User table*, Unique with PlaylistID | - | Number | 6 |
 
 #### Table: PodcastCreator
 
@@ -206,8 +207,8 @@ notifications when there are updates.
 | PodcastName | Not Null, Unique with CreatorID | - | Varchar2 | 75 |
 | StartDate | Not Null | - | Date | - |
 | EndDate | - | - | Date | - |
-| GenreID | Foreign Key to Genre table | - | Number | 2 |
-| CreatorID | Not Null, Foreign Key to PodcastCreator table, Unique with PodcastName | - | Number | 4 |
+| GenreID | Foreign Key to *Genre* table | - | Number | 2 |
+| CreatorID | Not Null, Foreign Key to *PodcastCreator* table, Unique with PodcastName | - | Number | 4 |
 
 #### Table: PodcastEpisode
 
@@ -216,7 +217,7 @@ notifications when there are updates.
 | EpisodeID | Primary Key | - | Number | 5 |
 | EpisodeName | Not Null, Unique with PodcastID | - | Varchar2 | 30 |
 | ReleaseDate | - | - | Date | - |
-| PodcastID | Not Null, Foreign Key to Podcast table, Unique with EpisodeName | - | Number | 3 |
+| PodcastID | Not Null, Foreign Key to *Podcast* table, Unique with EpisodeName | - | Number | 3 |
 
 #### Table: PodcastCreatorFollower
 
@@ -224,8 +225,8 @@ notifications when there are updates.
 |:---------:|:--------:|:---------:|:--------:|:---------:|
 | PCFollowerID | Primary Key | - | Number | 6 |
 | FollowDate | Not Null | SYSDATE | Date | - |
-| CreatorID | Not Null, Foreign Key to PodcastCreator table | - | Number | 4 |
-| UserID | Not Null, Foreign Key to TW_User table, Unique with CreatorID | - | Number | 6 |
+| CreatorID | Not Null, Foreign Key to *PodcastCreator* table, Unique with UserID | - | Number | 4 |
+| UserID | Not Null, Foreign Key to *TW_User* table, Unique with CreatorID | - | Number | 6 |
 
 #### Table: PodcastFollower
 
@@ -233,8 +234,8 @@ notifications when there are updates.
 |:---------:|:--------:|:---------:|:--------:|:---------:|
 | PodFollowerID | Primary Key | - | Number | 6 |
 | FollowDate | Not Null | SYSDATE | Date | - |
-| PodcastID | Not Null, Foreign Key to Podcast table, Unique with UserID | - | Number | 3 |
-| UserID  | Not Null, Foreign Key to TW_User table, Unique with PodcastID | - | Number | - |
+| PodcastID | Not Null, Foreign Key to *Podcast* table, Unique with UserID | - | Number | 3 |
+| UserID  | Not Null, Foreign Key to *TW_User* table, Unique with PodcastID | - | Number | 6 |
 
 ## Data for Tables
 
@@ -452,7 +453,7 @@ notifications when there are updates.
 |:----------:|:--------:|:-------:|:----:|
 |1|01-MAR-2024|1|1|
 |2|10-FEB-2024|2|2|
-|3|01-DEC-20233|3|
+|3|01-DEC-2023|3|3|
 |4|05-APR-2024|1|4|
 |5|20-MAY-2024|2|5|
 |6|15-JUL-2024|3|6|
